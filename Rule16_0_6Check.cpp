@@ -45,7 +45,7 @@ public:
         int tokenNum = MacroInfo->getNumTokens ();
         auto token_ptr = MacroInfo->tokens_begin ();
         bool error_flag = false;
-        for (int i = 1; i < tokenNum; i++) {
+        for (int i = 0; i < tokenNum; i++) {
           auto cur = PP.getSpelling(*(token_ptr+i), SpellingBuffer);
 
 
@@ -68,6 +68,7 @@ public:
             }
             
           }
+          
           if(error_flag)
           {
             auto loc = (*(token_ptr+i)).getLocation();
@@ -92,9 +93,7 @@ private:
   Preprocessor &PP;
 };
 
-void Rule16_0_6Check::registerMatchers(MatchFinder *Finder) {
-  // FIXME: Add matchers.
-}
+
 
 
 void Rule16_0_6Check::registerPPCallbacks(const SourceManager &SM, Preprocessor *PP, Preprocessor *ModuleExpanderPP) {
@@ -103,9 +102,6 @@ void Rule16_0_6Check::registerPPCallbacks(const SourceManager &SM, Preprocessor 
 
 }
 
-void Rule16_0_6Check::check(const MatchFinder::MatchResult &Result) {
-  // FIXME: Add callback implementation.
-}
 
 } // namespace misra
 } // namespace tidy
