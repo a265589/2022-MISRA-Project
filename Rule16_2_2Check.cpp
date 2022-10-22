@@ -56,9 +56,9 @@ public:
         errorFlag = false;
     }
 
-    auto MacroName = PP.getSpelling(MacroNameTok, SpellingBuffer);
+    /*auto MacroName = PP.getSpelling(MacroNameTok, SpellingBuffer);
     if(MacroName.equals("__GCC_HAVE_DWARF2_CFI_ASM"))  // default macro of clang which might cause unsupressed warning.
-      errorFlag = false;
+      errorFlag = false;*/
 
     if(MacroDefinition.size() > 0 && errorFlag)
       Check.diag(MacroInfo->getDefinitionLoc(), "C++ macros shall only be used for include guards, type qualifiers, or storage class specifiers.");
